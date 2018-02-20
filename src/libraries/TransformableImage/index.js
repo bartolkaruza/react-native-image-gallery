@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View, Text, Image, ViewPropTypes } from 'react-native';
+import { View, Text, Image, ViewPropTypes, Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
 import ViewTransformer from '../ViewTransformer';
 
@@ -92,6 +92,7 @@ export default class TransformableImage extends PureComponent {
     onLayout (e) {
         let {width, height} = e.nativeEvent.layout;
         if (this.state.viewWidth !== width || this.state.viewHeight !== height) {
+            const {width, height} = Dimensions.get('window');
             this.setState({ viewWidth: width, viewHeight: height });
         }
     }
